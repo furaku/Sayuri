@@ -11,4 +11,7 @@ Sayuri is a simple process launcher and manager. You can easily start the proces
 さゆり
 ======
 
+##概要
+さゆりはプロセスを簡単に起動し、管理を行います。わずらわしいコマンドを記憶させておくことにより、プロセスをGUIで簡単に起動できます。また、起動したプロセスを簡単に止められます。
+
 
