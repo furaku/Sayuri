@@ -15,7 +15,7 @@ Sayuri is a simple process launcher and manager. You can easily start the proces
 Sorry, packages aren't created yet. Please build from source files yourself.
 
 ## Licence
-You can use under the MIT licence. Please see [a licence file](https://github.com/furaku/Sayuri/blob/master/LICENSE) for more informations.
+You can use under the MIT licence. Please see [a licence file](blob/master/LICENSE) for more informations.
 
 ------
 
