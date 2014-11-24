@@ -12,7 +12,7 @@ Sayuri is a simple process launcher and manager. You can easily start the proces
 -Qt Library ~ 5.3.
 
 ## Install
-Sorry, packages aren't created yet. Please build from source files.
+Sorry, packages aren't created yet. Please build from source files yourself.
 
 ## Licence
 You can use under the MIT licence. Plese see a [licence file](https://github.com/furaku/Sayuri/blob/master/LICENSE).
