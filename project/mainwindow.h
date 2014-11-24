@@ -72,9 +72,9 @@ private slots:
 	void acceptedService();
 	void changedOutputVisible(bool);
 	void tabCloseRequested(int);
-    void finishedProcess(int, int, QProcess::ExitStatus);
-    void errorProcess(int, QProcess::ProcessError);
-    void readyProcessOutput(int, const QString &, bool);
+	void finishedProcess(int, int, QProcess::ExitStatus);
+	void errorProcess(int, QProcess::ProcessError);
+	void readyProcessOutput(int, const QString &, bool);
 
 private:
 	static const QString PROCESSES_DIR_NAME;

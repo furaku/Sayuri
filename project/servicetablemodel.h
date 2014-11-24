@@ -72,9 +72,9 @@ class ServiceData : public QSettings
 	Q_OBJECT
 
 signals:
-    void finishedProcess(int process_num, int exit_code, QProcess::ExitStatus status);
-    void errorProcess(int process_num, QProcess::ProcessError error);
-    void readyProcessOutput(int process_num, const QString &text, bool error);
+	void finishedProcess(int process_num, int exit_code, QProcess::ExitStatus status);
+	void errorProcess(int process_num, QProcess::ProcessError error);
+	void readyProcessOutput(int process_num, const QString &text, bool error);
 
 public:
 	ServiceData(const QString &file_name, QObject *parent = NULL);
@@ -89,15 +89,15 @@ public:
 	Process *getProcess1();
 	Process *getProcess2();
 	Process *getProcess3();
-    const QString &getHost();
-    void setHost(const QString &host);
-    const QString &getPort();
-    void setPort(const QString &port);
+	const QString &getHost();
+	void setHost(const QString &host);
+	const QString &getPort();
+	void setPort(const QString &port);
 
 	void restoreSettings();
 	void storeSettings();
-    void toggledProcess(int process_num);
-    void terminateAllProcess();
+	void toggledProcess(int process_num);
+	void terminateAllProcess();
 private slots:
 	void finishedProcess(int, QProcess::ExitStatus);
 	void errorProcess(QProcess::ProcessError);
@@ -112,8 +112,8 @@ private:
 	static const QString PROCESS2_GROUP;
 	static const QString PROCESS3_GROUP;
 	static const QString COMMAND_KEY;
-    static const QString HOST_KEY;
-    static const QString PORT_KEY;
+	static const QString HOST_KEY;
+	static const QString PORT_KEY;
 
 	QString key;
 	QString group;
@@ -121,12 +121,12 @@ private:
 	Process process1;
 	Process process2;
 	Process process3;
-    QString host;
-    QString port;
+	QString host;
+	QString port;
 
-    QTcpSocket *socket;
+	QTcpSocket *socket;
 
-    int getProcessNum(const Process *process);
+	int getProcessNum(const Process *process);
 };
 
 class ProcessDelegate : public QStyledItemDelegate

@@ -164,17 +164,17 @@ void MainWindow::closeEvent(QCloseEvent * event)
 void MainWindow::clickedTable(const QModelIndex &index) {
 	if (index.isValid())
 	{
-        switch (index.column()) {
-        case ServiceTableModel::PROCESS1:
-            model_data[index.row()]->toggledProcess(1);
-            break;
-        case ServiceTableModel::PROCESS2:
-            model_data[index.row()]->toggledProcess(2);
-            break;
-        case ServiceTableModel::PROCESS3:
-            model_data[index.row()]->toggledProcess(3);
-            break;
-        }
+		switch (index.column()) {
+		case ServiceTableModel::PROCESS1:
+			model_data[index.row()]->toggledProcess(1);
+			break;
+		case ServiceTableModel::PROCESS2:
+			model_data[index.row()]->toggledProcess(2);
+			break;
+		case ServiceTableModel::PROCESS3:
+			model_data[index.row()]->toggledProcess(3);
+			break;
+		}
 	}
 }
 
@@ -197,15 +197,15 @@ void MainWindow::removeServiceAction()
 	QModelIndexList indexes = ui->tableView->selectionModel()->selectedIndexes();
 	if (!indexes.empty())
 	{
-        int row = indexes[0].row();
-        ServiceData *data = model_data.at(row);
-        QMessageBox msg_box;
-        msg_box.setText(tr("Are you sure you want to remove this service?\nGroup: %1\nName: %2").arg(data->getGroup(), data->getName()));
-        msg_box.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
-        msg_box.setDefaultButton(QMessageBox::Cancel);
-        if (msg_box.exec() == QMessageBox::Ok) {
-            removeService(row);
-        }
+		int row = indexes[0].row();
+		ServiceData *data = model_data.at(row);
+		QMessageBox msg_box;
+		msg_box.setText(tr("Are you sure you want to remove this service?\nGroup: %1\nName: %2").arg(data->getGroup(), data->getName()));
+		msg_box.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+		msg_box.setDefaultButton(QMessageBox::Cancel);
+		if (msg_box.exec() == QMessageBox::Ok) {
+			removeService(row);
+		}
 	}
 }
 
@@ -250,9 +250,9 @@ void MainWindow::acceptedService()
 		key = QCryptographicHash::hash(key.toLocal8Bit(), QCryptographicHash::Md5).toHex();
 		data = new ServiceData(QString(PROCESSES_DIR_NAME + QDir::separator() + "%1.ini").arg(key));
 		data->setKey(key);
-        connect(data, SIGNAL(finishedProcess(int, int, QProcess::ExitStatus)), this, SLOT(finishedProcess(int, int, QProcess::ExitStatus)));
-        connect(data, SIGNAL(errorProcess(int, QProcess::ProcessError)), this, SLOT(errorProcess(int, QProcess::ProcessError)));
-        connect(data, SIGNAL(readyProcessOutput(int, const QString &, bool)), this, SLOT(readyProcessOutput(int, const QString &, bool)));
+		connect(data, SIGNAL(finishedProcess(int, int, QProcess::ExitStatus)), this, SLOT(finishedProcess(int, int, QProcess::ExitStatus)));
+		connect(data, SIGNAL(errorProcess(int, QProcess::ProcessError)), this, SLOT(errorProcess(int, QProcess::ProcessError)));
+		connect(data, SIGNAL(readyProcessOutput(int, const QString &, bool)), this, SLOT(readyProcessOutput(int, const QString &, bool)));
 		model_data.append(data);
 	} else
 	{
@@ -299,9 +299,9 @@ void MainWindow::load() throw (const MakeDirError *)
 	{
 		ServiceData *data = new ServiceData(PROCESSES_DIR_NAME + QDir::separator() + file_name);
 		data->restoreSettings();
-        connect(data, SIGNAL(finishedProcess(int, int, QProcess::ExitStatus)), this, SLOT(finishedProcess(int, int, QProcess::ExitStatus)));
-        connect(data, SIGNAL(errorProcess(int, QProcess::ProcessError)), this, SLOT(errorProcess(int, QProcess::ProcessError)));
-        connect(data, SIGNAL(readyProcessOutput(int, const QString &, bool)), this, SLOT(readyProcessOutput(int, const QString &, bool)));
+		connect(data, SIGNAL(finishedProcess(int, int, QProcess::ExitStatus)), this, SLOT(finishedProcess(int, int, QProcess::ExitStatus)));
+		connect(data, SIGNAL(errorProcess(int, QProcess::ProcessError)), this, SLOT(errorProcess(int, QProcess::ProcessError)));
+		connect(data, SIGNAL(readyProcessOutput(int, const QString &, bool)), this, SLOT(readyProcessOutput(int, const QString &, bool)));
 		model_data.append(data);
 	}
 }
@@ -321,10 +321,10 @@ void MainWindow::tabCloseRequested(int index)
 
 void MainWindow::finishedProcess(int process_num, int/* exit_code*/, QProcess::ExitStatus/* status*/)
 {
-    int row = model_data.indexOf((ServiceData *) sender());
-    if (row >= 0)
+	int row = model_data.indexOf((ServiceData *) sender());
+	if (row >= 0)
 	{
-        QModelIndex model_index = table_model.index(row, process_num);
+		QModelIndex model_index = table_model.index(row, process_num);
 		table_model.dataChanged(model_index, model_index);
 	}
 }
@@ -353,21 +353,21 @@ void MainWindow::errorProcess(int process_num, QProcess::ProcessError error)
 		error_text.append(tr("Unknown error process:%1"));
 		break;
 	}
-    QString name;
-    ServiceData *data = (ServiceData *) sender();
-    switch (process_num) {
-    case 1:
-        name = data->getProcess1()->getName();
-        break;
-    case 2:
-        name = data->getProcess2()->getName();
-        break;
-    case 3:
-        name = data->getProcess3()->getName();
-        break;
-    }
+	QString name;
+	ServiceData *data = (ServiceData *) sender();
+	switch (process_num) {
+	case 1:
+		name = data->getProcess1()->getName();
+		break;
+	case 2:
+		name = data->getProcess2()->getName();
+		break;
+	case 3:
+		name = data->getProcess3()->getName();
+		break;
+	}
 
-    msg_box.setText(error_text.arg(name));
+	msg_box.setText(error_text.arg(name));
 	msg_box.exec();
 }
 
@@ -469,7 +469,7 @@ void MainWindow::removeService(int index)
 	table_model.setResetModel(true);
 	model_data.removeAt(index);
 	table_model.setResetModel(false);
-    QFile(data->fileName()).remove();
+	QFile(data->fileName()).remove();
 	delete data;
 }
 
@@ -477,6 +477,6 @@ void MainWindow::terminateAllProcesses()
 {
 	foreach(ServiceData *data, model_data)
 	{
-        data->terminateAllProcess();
+		data->terminateAllProcess();
 	}
 }

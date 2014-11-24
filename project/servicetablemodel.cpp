@@ -212,7 +212,7 @@ const QString ServiceData::PORT_KEY("PORT");
 ServiceData::ServiceData(const QString &file_name, QObject *parent)
 	: QSettings(file_name, QSettings::IniFormat, parent)
 {
-    socket = NULL;
+	socket = NULL;
 
 	connect(&process1, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(finishedProcess(int, QProcess::ExitStatus)));
 	connect(&process2, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(finishedProcess(int, QProcess::ExitStatus)));
@@ -279,22 +279,22 @@ Process *ServiceData::getProcess3()
 
 const QString &ServiceData::getHost()
 {
-    return host;
+	return host;
 }
 
 void ServiceData::setHost(const QString &host)
 {
-    this->host = host;
+	this->host = host;
 }
 
 const QString &ServiceData::getPort()
 {
-    return port;
+	return port;
 }
 
 void ServiceData::setPort(const QString &port)
 {
-    this->port = port;
+	this->port = port;
 }
 
 void ServiceData::restoreSettings()
@@ -314,8 +314,8 @@ void ServiceData::restoreSettings()
 	process3.setCommand(value(COMMAND_KEY).toString());
 	process3.setName(value(NAME_KEY).toString());
 	endGroup();
-    host = value(HOST_KEY).toString();
-    port = value(PORT_KEY).toString();
+	host = value(HOST_KEY).toString();
+	port = value(PORT_KEY).toString();
 }
 
 void ServiceData::storeSettings()
@@ -335,76 +335,76 @@ void ServiceData::storeSettings()
 	setValue(COMMAND_KEY, process3.getCommand());
 	setValue(NAME_KEY, process3.getName());
 	endGroup();
-    setValue(HOST_KEY, host);
-    setValue(PORT_KEY, port);
+	setValue(HOST_KEY, host);
+	setValue(PORT_KEY, port);
 }
 
 void ServiceData::toggledProcess(int process_num)
 {
-    Process *process = NULL;
-    switch (process_num) {
-    case 1:
-        process = &process1;
-        break;
-    case 2:
-        process = &process2;
-        break;
-    case 3:
-        process = &process3;
-        break;
-    }
+	Process *process = NULL;
+	switch (process_num) {
+	case 1:
+		process = &process1;
+		break;
+	case 2:
+		process = &process2;
+		break;
+	case 3:
+		process = &process3;
+		break;
+	}
 
-    if (process != NULL) {
-        if (process->state() == Process::Running) {
-            process->terminate();
-        } else {
-            process->startCommand();
-        }
-    }
+	if (process != NULL) {
+		if (process->state() == Process::Running) {
+			process->terminate();
+		} else {
+			process->startCommand();
+		}
+	}
 }
 
 void ServiceData::terminateAllProcess()
 {
-    process1.terminate();
-    process2.terminate();
-    process3.terminate();
+	process1.terminate();
+	process2.terminate();
+	process3.terminate();
 }
 
 void ServiceData::finishedProcess(int exit_code, QProcess::ExitStatus status)
 {
-    Process *process = (Process *) sender();
-    emit finishedProcess(getProcessNum(process), exit_code, status);
+	Process *process = (Process *) sender();
+	emit finishedProcess(getProcessNum(process), exit_code, status);
 }
 
 void ServiceData::errorProcess(QProcess::ProcessError error)
 {
-    Process *process = (Process *) sender();
-    emit errorProcess(getProcessNum(process), error);
+	Process *process = (Process *) sender();
+	emit errorProcess(getProcessNum(process), error);
 }
 
 void ServiceData::readProcessStdOutput()
 {
-    Process *process = (Process *) sender();
-    emit readyProcessOutput(getProcessNum(process), QString(process->readAllStandardOutput()), false);
+	Process *process = (Process *) sender();
+	emit readyProcessOutput(getProcessNum(process), QString(process->readAllStandardOutput()), false);
 }
 
 void ServiceData::readProcessStdError()
 {
-    Process *process = (Process *) sender();
-    emit readyProcessOutput(getProcessNum(process), QString(process->readAllStandardError()), true);
+	Process *process = (Process *) sender();
+	emit readyProcessOutput(getProcessNum(process), QString(process->readAllStandardError()), true);
 }
 
 int ServiceData::getProcessNum(const Process *process)
 {
-    int process_num = -1;
-    if (process == &process1) {
-        process_num = 1;
-    } else if (process == &process2) {
-        process_num = 2;
-    } else if (process == &process3){
-        process_num = 3;
-    }
-    return process_num;
+	int process_num = -1;
+	if (process == &process1) {
+		process_num = 1;
+	} else if (process == &process2) {
+		process_num = 2;
+	} else if (process == &process3){
+		process_num = 3;
+	}
+	return process_num;
 }
 
 const int Process::TIMEOUT = 10000;

@@ -42,7 +42,7 @@ void ConsoleWidget::write(const QString &text, bool error)
 	{
 		edit->setTextColor(NO_ERROR_COROR);
 	}
-    edit->append(text);
+	edit->append(text);
 	QScrollBar *scrollBar = edit->verticalScrollBar();
 	scrollBar->setValue(scrollBar->maximum());
 }
