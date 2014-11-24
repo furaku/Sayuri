@@ -1,6 +1,7 @@
 Sayuri
 ======
 
+http://furaku.orz.hm/github/sayuri/images/application.png
 ![](http://furaku.orz.hm/github/sayuri/images/application.png)
 
 ## Overview
