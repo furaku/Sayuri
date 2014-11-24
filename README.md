@@ -9,10 +9,10 @@ Sayuri
 Sayuri is a simple process launcher and manager. You can easily start the process in the GUI, by saving cumbersome some commands. And, you can easily stop the process that was started.
 
 ## Requirement
-*Qt Library ~ 5.3.
+-Qt Library ~ 5.3.
 
 ## Install
-Sorry, Packages aren't created yet. Please build from source files.
+Sorry, packages aren't created yet. Please build from source files.
 
 ## Licence
 You can use under the MIT licence. Plese see a [licence file](https://github.com/furaku/Sayuri/blob/master/LICENSE).
@@ -31,7 +31,7 @@ below in Japanese
 さゆりはプロセスを簡単に起動し、管理を行います。わずらわしいコマンドを記憶させておくことにより、プロセスをGUIで簡単に起動できます。また、起動したプロセスを簡単に止められます。
 
 ## 要件
-*Qt Library ~ 5.3.
+-Qt Library ~ 5.3.
 
 ## インストール
 まだ、パッケージを用意できていません。申し訳ございませんが、各自でソースファイルからビルドしてください。
