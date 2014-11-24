@@ -1,5 +1,6 @@
-Sayuri [日本語で](https://github.com/furaku/Sayuri#%E3%81%95%E3%82%86%E3%82%8A)
+Sayuri 
 ======
+([日本語で](https://github.com/furaku/Sayuri#%E3%81%95%E3%82%86%E3%82%8A))
 
 ![](http://furaku.orz.hm/github/sayuri/images/application.png)
 
